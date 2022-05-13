@@ -9,6 +9,8 @@ const usuarios = require('./usuariosRoute');
 const escolas = require('./escolasRoute');
 const responsaveis = require('./responsaveisRoute');
 const enderecos = require('./enderecosRoute');
+const turmas = require('./turmasRoute');
+const alunos = require('./alunosRoute');
 
 
 module.exports = app => {
@@ -22,6 +24,8 @@ module.exports = app => {
     usuarios,
     escolas,
     responsaveis,
-    enderecos
+    enderecos,
+    turmas,
+    alunos
   )
 }
