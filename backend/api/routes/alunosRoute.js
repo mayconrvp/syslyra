@@ -8,4 +8,10 @@ router
  .post('/alunos', AlunoController.criarAluno)
  .put('/alunos/:id', AlunoController.atualizarAluno)
  .delete('/alunos/:id', AlunoController.excluirAluno)
+ .get('/alunos/:alunoId/matricula/:matriculaId', AlunoController.listarUmaMatricula)
+ .get('/alunos/:alunoId/matricula/', AlunoController.listarMatriculasDeAluno)
+ .post('/alunos/:alunoId/matricula', AlunoController.criarMatricula)
+ .put('/alunos/:alunoId/matricula/:matriculaId', AlunoController.atualizarMatricula)
+ .delete('/alunos/:alunoId/matricula/:matriculaId', AlunoController.excluirMatricula)
+
 module.exports = router

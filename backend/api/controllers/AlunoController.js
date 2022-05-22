@@ -122,6 +122,113 @@ class AlunoController {
       return res.status(500).json(err.message);
     }
   }
+
+  // -------------------------- CONTROLADORES DE MATRICULAS DE ALUNOS --------------------------
+
+  static async listarUmaMatricula(req, res){
+    let { alunoId, matriculaId } = req.params;
+    try{
+      const matricula = await database.Matriculas.findOne(
+        { 
+          where: {
+            id: Number(matriculaId),
+            idAluno: Number(alunoId)
+          },
+          include: [
+            {
+              model: database.Alunos,
+              attributes: ['nome']
+            },
+            {
+              model: database.Turmas,
+              attributes: ['descricao']
+            }
+          ]
+        }
+      );
+      return res.status(200).json(matricula);
+    }catch(err){
+      return res.status(500).json(err.message);
+    }
+  }
+
+  static async listarMatriculasDeAluno(req, res){
+    let { alunoId } = req.params;
+    try{
+      const matricula = await database.Matriculas.findAll(
+        { 
+          where: {
+            idAluno: Number(alunoId)
+          },
+          include: [
+            {
+              model: database.Alunos,
+              attributes: ['nome']
+            },
+            {
+              model: database.Turmas,
+              attributes: ['descricao']
+            }
+          ]
+        }
+      );
+      return res.status(200).json(matricula);
+    }catch(err){
+      return res.status(500).json(err.message);
+    }
+  }
+
+  static async criarMatricula(req, res){
+    const { alunoId } = req.params;
+    const novaMatricula = { ...req.body, idAluno: Number(alunoId)}
+
+    try{
+      const matriculaCriada = await database.Matriculas.create(novaMatricula);
+      return res.status(201).json(matriculaCriada);
+    }catch (err){
+      return res.status(500).json(err.message);
+    }
+  }
+
+  static async atualizarMatricula(req, res){
+    const {alunoId, matriculaId } = req.params;
+    const infos = req.body;
+
+    try{
+      await database.Matriculas.update(infos, { 
+        where: {
+          id: Number(matriculaId),
+          idAluno: Number(alunoId)
+        }
+      }
+      );
+      const matriculaAtualizada = await database.Matriculas.findOne(
+        { 
+          where: {
+            id: Number(matriculaId)
+          },
+        }
+      );
+      return res.status(200).json(matriculaAtualizada);
+    }catch(err){
+      return res.status(500).json(err.message);
+    }
+  }
+
+  static async excluirMatricula(req, res){
+    let { matriculaId, alunoId } = req.params;
+    try{
+      await database.Matriculas.destroy({ where: 
+        {
+          id: Number(matriculaId),
+          idAluno: Number(alunoId)
+        }
+      })
+      return res.status(200).send({message: `Matricula de Id ${matriculaId} deletada`});
+    }catch(err){
+      return res.status(500).json(err.message);
+    }
+  }
 }
 
 module.exports = AlunoController;
