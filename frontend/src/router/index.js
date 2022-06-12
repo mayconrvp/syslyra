@@ -8,6 +8,8 @@ import ListTurmas from "../views/Turmas/ListTurmas.vue";
 import CadastroTurmas from "../views/Turmas/CadastroTurmas.vue";
 import ListEscolas from "../views/Escolas/ListEscolas.vue";
 import CadastroEscolas from "../views/Escolas/CadastroEscolas.vue";
+import ListInstrumentos from "../views/Instrumentos/ListInstrumentos.vue";
+import CadastroInstrumentos from "../views/Instrumentos/CadastroInstrumentos.vue";
 
 Vue.use(VueRouter)
 
@@ -82,6 +84,24 @@ const routes = [
     path: "/cadEscolas/:id",
     name: "AlteraEscola",
     component: CadastroEscolas,
+    menu: false
+  },
+  {
+    path: "/instrumentos",
+    name: "Instrumento",
+    component: ListInstrumentos,
+    menu: true
+  },
+  {
+    path: "/CadInstrumentos",
+    name: "CadInstrumento",
+    component: CadastroInstrumentos,
+    menu: false
+  },
+  {
+    path: "/cadInstrumentos/:id",
+    name: "AlteraInstrumento",
+    component: CadastroInstrumentos,
     menu: false
   },
   // {
