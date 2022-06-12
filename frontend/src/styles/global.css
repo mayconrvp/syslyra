@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+
+:root {
+  --color-background: #F3F3F3;
+  --color-background-nav: #2B3D50;
+  --color-background-home: #344960;
+  --color-text-light: #EDEDED;
+  --color-text-title: #708090;
+  --color-text-dark: #3D3D3D;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--color-background);
+}
+
+a {
+  text-decoration: none;
+  transition: 0.2s opacity;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Ubuntu', sans-serif;
+  color: var(--color-text-title);
+}
+
+a:hover {
+  opacity: 0.8;
+}
