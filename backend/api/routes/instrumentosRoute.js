@@ -3,9 +3,9 @@ const InstrumentoController = require('../controllers/InstrumentoController');
 
 const router = Router()
 router
- .get('/cursos', InstrumentoController.listarInstrumentos)
- .get('/cursos/:id', InstrumentoController.listarInstrumentoPorId)
- .post('/cursos', InstrumentoController.criarInstrumento)
- .put('/cursos/:id', InstrumentoController.atualizarInstrumento)
- .delete('/cursos/:id', InstrumentoController.excluirInstrumento)
+ .get('/instrumentos', InstrumentoController.listarInstrumentos)
+ .get('/instrumentos/:id', InstrumentoController.listarInstrumentoPorId)
+ .post('/instrumentos', InstrumentoController.criarInstrumento)
+ .put('/instrumentos/:id', InstrumentoController.atualizarInstrumento)
+ .delete('/instrumentos/:id', InstrumentoController.excluirInstrumento)
 module.exports = router

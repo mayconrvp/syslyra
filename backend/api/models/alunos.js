@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       Alunos.hasMany(models.Emprestimos, {
         foreignKey: 'idAluno'
       })
-      Alunos.hasMany(models.Aula_aluno, {
+      Alunos.hasMany(models.Aulas_alunos, {
         foreignKey: 'idAluno'
       })
       Alunos.hasMany(models.Matriculas, {

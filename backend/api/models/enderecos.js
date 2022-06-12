@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       Enderecos.hasMany(models.Alunos, {
         foreignKey: 'idEndereco'
       });
-      Enderecos.belongsTo(models.Cidades, {
-        foreignKey: 'idCidade'
+      Enderecos.belongsTo(models.Estados, {
+        foreignKey: 'idEstado'
       });
     }
   }
@@ -24,7 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     numero: DataTypes.STRING,
     bairro: DataTypes.STRING,
     cep: DataTypes.STRING,
-    complemento: DataTypes.STRING
+    complemento: DataTypes.STRING,
+    cidade: DataTypes.STRING,
+    idEstado: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Enderecos',
