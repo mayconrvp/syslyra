@@ -8,7 +8,7 @@ class TurmaController {
         include: [
           {
             model: database.Cursos,
-            attributes: ['descricao']
+            attributes: ['id','nome']
           },
           {
             model: database.Funcionarios,
@@ -29,20 +29,19 @@ class TurmaController {
         { 
           where: {
             id: Number(id)
-          }
+          }, 
+          include: [
+            {
+              model: database.Cursos,
+              attributes: ['id','nome']
+            },
+            {
+              model: database.Funcionarios,
+              attributes: ['nome']
+            },
+          ]
         },
-        {
-        include: [
-          {
-            model: database.Cursos,
-            attributes: ['descricao']
-          },
-          {
-            model: database.Funcionarios,
-            attributes: ['nome']
-          },
-        ]
-      }
+
       );
       return res.status(200).json(turma);
     }catch(err){
