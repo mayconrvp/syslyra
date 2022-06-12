@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Aulas_alunos', {
+    await queryInterface.createTable('Aula_aluno', {
 
       idAula: {
         allowNull: false,
@@ -22,9 +22,6 @@ module.exports = {
       nota: {
         type: Sequelize.DOUBLE
       },
-      chamada: {
-        type: Sequelize.STRING
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -36,6 +33,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Aulas_alunos');
+    await queryInterface.dropTable('Aula_aluno');
   }
 };

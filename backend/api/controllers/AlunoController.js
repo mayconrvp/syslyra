@@ -8,10 +8,10 @@ class AlunoController {
         include: [
           {
             model: database.Enderecos,
-            attributes: ['logradouro', 'numero', 'bairro', 'cep', 'complemento', 'cidade'],
+            attributes: ['logradouro', 'numero', 'bairro', 'cep', 'complemento'],
             include: [{
-              model: database.Estados,
-              attributes: ['id', 'uf', 'nome']
+              model: database.Cidades,
+              attributes: ['nome']
             }]
           },
           {
@@ -20,7 +20,7 @@ class AlunoController {
           },
           {
             model: database.Responsaveis,
-            attributes: ['responsavel', 'telefone', 'email']
+            attributes: ['responsavel']
           }
         ]
       });
@@ -41,10 +41,10 @@ class AlunoController {
           include: [
             {
               model: database.Enderecos,
-              attributes: ['logradouro', 'numero', 'bairro', 'cep', 'complemento', 'cidade'],
+              attributes: ['logradouro', 'numero', 'bairro', 'cep', 'complemento'],
               include: [{
-                model: database.Estados,
-                attributes: ['id', 'uf', 'nome']
+                model: database.Cidades,
+                attributes: ['nome']
               }]
             },
             {
@@ -53,7 +53,7 @@ class AlunoController {
             },
             {
               model: database.Responsaveis,
-              attributes: ['responsavel', 'telefone', 'email']
+              attributes: ['responsavel']
             }
           ]
         }
@@ -100,7 +100,11 @@ class AlunoController {
           include: [
             {
               model: database.Enderecos,
-              attributes: ['logradouro', 'numero', 'bairro', 'cep', 'complemento', 'cidade'],
+              attributes: ['logradouro', 'numero', 'bairro', 'cep', 'complemento'],
+              include: [{
+                model: database.Cidades,
+                attributes: ['nome']
+              }]
             },
             {
               model: database.Escolas,

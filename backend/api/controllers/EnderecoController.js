@@ -4,12 +4,7 @@ class EnderecoController {
 
   static async listarEnderecos(req, res){
     try{
-      const enderecos = await database.Enderecos.findAll({
-        include: {
-          model: database.Estados, 
-          attributes: ['id','uf']
-        }
-      });
+      const enderecos = await database.Enderecos.findAll();
       return res.status(200).json(enderecos);
     }catch(err){
       return res.status(500).json(err.message);
@@ -19,15 +14,16 @@ class EnderecoController {
   static async listarEnderecoPorId(req, res){
     let id = req.params.id;
     try{
-      const endereco = await database.Enderecos.findOne({ 
-        where: 
-        {
-          id: Number(id)
-        },
-        include: {
-          model: database.Estados, 
-          attributes: ['id','uf']
-        }
+      const endereco = await database.Enderecos.findOne({ where: {id: Number(id)}}, {
+        include: [
+          {
+            model: database.Cidades,
+            attributes: ['nome'],
+            include: [
+              {model: database.Estados, attributes: ['uf']}
+            ]
+          }
+        ]
       })
       return res.status(200).json(endereco);
     }catch(err){
