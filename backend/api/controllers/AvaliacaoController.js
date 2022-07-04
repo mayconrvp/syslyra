@@ -55,6 +55,21 @@ class AvaliacaoController {
       return res.status(500).json(err.message);
     }
   }
+
+  static async listarAvaliacoesPorTurma(req, res){
+    const turmaId = req.params.turmaId;
+    try{
+      const avaliacoes = await database.Avaliacoes.findAll({ 
+        where: 
+        {
+          idTurma: Number(turmaId),
+        }
+      })
+      return res.status(200).json(avaliacoes);
+    }catch(err){
+      return res.status(500).json(err.message);
+    }
+  }
 }
 
 module.exports = AvaliacaoController;

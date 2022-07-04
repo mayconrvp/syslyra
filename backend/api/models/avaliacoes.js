@@ -10,14 +10,18 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Avaliacoes.hasMany(models.Aulas_alunos, {
+      Avaliacoes.hasMany (models.Aulas_matriculas, {
         foreignKey: 'idAvaliacao'
+      })
+      
+      Avaliacoes.belongsTo(models.Turmas, {
+        foreignKey: 'idTurma'
       })
     }
   }
   Avaliacoes.init({
     descricao: DataTypes.STRING,
-    pontuacao: DataTypes.DOUBLE
+    pontuacao: DataTypes.DOUBLE,
   }, {
     sequelize,
     modelName: 'Avaliacoes',

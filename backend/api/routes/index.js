@@ -13,13 +13,15 @@ const turmas = require('./turmasRoute');
 const alunos = require('./alunosRoute');
 const emprestimos = require('./emprestimosRoute');
 const aulas = require('./aulasRoute')
-const aulasAlunos = require('./aulasAlunosRoute')
+const aulasMatriculas = require('./aulasMatriculasRoute')
 const estados = require('./estadosRoute')
+const login = require('./loginRoute')
 
 
 module.exports = app => {
   app.use(
     bodyParser.json(),
+    login,
     avaliacoes,
     instrumentos,
     funcionarios,
@@ -32,7 +34,7 @@ module.exports = app => {
     alunos,
     emprestimos,
     aulas,
-    aulasAlunos,
+    aulasMatriculas,
     estados
   )
 }

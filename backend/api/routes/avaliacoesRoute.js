@@ -8,4 +8,6 @@ router
  .post('/avaliacoes', AvaliacaoController.criarAvaliacao)
  .put('/avaliacoes/:id', AvaliacaoController.atualizarAvaliacao)
  .delete('/avaliacoes/:id', AvaliacaoController.excluirAvaliacao)
+ .get('/avaliacoes/turma/:turmaId', AvaliacaoController.listarAvaliacoesPorTurma)
+
 module.exports = router

@@ -137,7 +137,7 @@ class AlunoController {
             },
             {
               model: database.Turmas,
-              attributes: ['descricao']
+              attributes: ['id', 'descricao']
             }
           ]
         }
@@ -163,7 +163,7 @@ class AlunoController {
             },
             {
               model: database.Turmas,
-              attributes: ['descricao']
+              attributes: ['id', 'descricao']
             }
           ]
         }
@@ -221,6 +221,32 @@ class AlunoController {
         }
       })
       return res.status(200).send({message: `Matricula de Id ${matriculaId} deletada`});
+    }catch(err){
+      return res.status(500).json(err.message);
+    }
+  }
+
+  static async listarMatriculasPorTurma(req,res){
+    let { turmaId } = req.params;
+    try{
+      const matriculas = await database.Matriculas.findAll(
+        { 
+          where: {
+            idTurma: Number(turmaId)
+          },
+          include: [
+            {
+              model: database.Alunos,
+              attributes: ['nome']
+            },
+            {
+              model: database.Turmas,
+              attributes: ['id', 'descricao']
+            }
+          ]
+        }
+      );
+      return res.status(200).json(matriculas);
     }catch(err){
       return res.status(500).json(err.message);
     }

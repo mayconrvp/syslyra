@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       Turmas.hasMany(models.Matriculas, {
         foreignKey: 'idTurma'
       })
+      Turmas.hasMany(models.Avaliacoes, {
+        foreignKey: 'idTurma'
+      })
     }
   }
   Turmas.init({

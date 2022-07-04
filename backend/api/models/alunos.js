@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       Alunos.hasMany(models.Emprestimos, {
         foreignKey: 'idAluno'
       })
-      Alunos.hasMany(models.Aulas_alunos, {
+      Alunos.hasMany(models.Matriculas, {
         foreignKey: 'idAluno'
       })
       Alunos.hasMany(models.Matriculas, {
@@ -35,7 +35,8 @@ module.exports = (sequelize, DataTypes) => {
     dataNascimento: DataTypes.DATEONLY,
     turno: DataTypes.STRING,
     telefone: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: DataTypes.STRING,
+    cpf: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Alunos',
